@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی کافه</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="LIGHT(img)/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="LIGHT(img)/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* تنظیمات پایه */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            direction: rtl; /* راست‌چین */
+            background-color: #FFF8DC;
+        }
+        h1, h2 {
+           font-family: 'Poppins', sans-serif;
+           font-weight: 600;
+        }
+
+        p, .price {
+           font-family: 'Arial', sans-serif;
+        }
+
+
+        /* استایل برای سایدبار */
+        .sidebar {
+            height: 200vh;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #4B3621;
+            padding-top: 20px;
+            z-index: 100;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color:  #FFF8DC;
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #D2B48C;
+        }
+
+        .menu-container {
+            margin-left: 260px; /* برای فاصله از سایدبار */
+            padding: 20px;
+        }
+
+        /* تنظیمات دیگر برای محتوای منو */
+        header {
+            background-color: #4B3621;
+            color: #FFF8DC;
+            padding: 10px 0;
+            padding-right: 570px; /*اینجا برای اینکه بتونم منو کافه را خودم جاشو تنطیم کنم*/
+        }
+
+        .menu-title {
+            text-align: center;
+            color: #4B3621;
+            font-size: 24px;
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px; 
+        }
+
+        .menu-item {
+            background-color: #FFF8DC;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* اضافه کردن سایه به هنگام hover */
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .menu-item h3 {
+            margin: 10px 0;
+            color: #4B3621;
+        }
+
+        .menu-item p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .menu-item .price {
+            font-size: 16px;
+            color: #A0522D;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .add-note {
+            display: block;
+            text-decoration: none;
+            background-color:  #D2B48C;
+            color: #4B3621;
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .add-note:hover {
+            background-color: #4B3621;
+        }
+
+        .menu-section{
+            display: none;
+        }
+        @media (max-width: 768px) {
+    .sidebar {
+        width: 60px; /* کاهش عرض سایدبار در دستگاه‌های موبایل */
+    }
+
+    .menu-container {
+        margin-left: 80px; /* فاصله به اندازه سایدبار */
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr; /* نمایش به صورت یک ستون */
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>منوی کافه</h1>
+    </header>
+
+    <!-- سایدبار -->
+    <div class="sidebar">
+        <a href="#hot-drinks" onclick="showSection('hot-drinks')">نوشیدنی‌های گرم</a>
+        <a href="#herbal-tea" onclick="showSection('herbal-tea')">دمنوش‌ها</a>
+        <a href="#cold-drinks" onclick="showSection('cold-drinks')">نوشیدنی‌های سرد</a>
+        <a href="#food" onclick="showSection('food')">غذاها</a>
+        <a href="#desserts" onclick="showSection('desserts')">دسرها</a>
+        <a href="cafe.htm">بازگشت به صفحه اصلی</a>
+    </div>
+
+    <div class="menu-container">
+        <div id="hot-drinks" class="menu-section">
+            <h2 class="menu-title">نوشیدنی های گرم</h2>
+            <div class="menu-grid">
+            <!-- آیتم‌های منو به همین شکل اضافه می‌شوند -->
+            <div class="menu-item">
+                <img src="LIGHT(img)/americano.jpg" alt="آمریکانو" loading="lazy">
+                <h3>آمریکانو</h3>
+                <div class="price">105 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+                <img src="LIGHT(img)/double.jpg" alt="دبل اسپرسو" loading="lazy">
+                <h3>دبل اسپرسو</h3>
+                <div class="price">105 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/capuchino.jpg" alt="کاپوچینو" loading="lazy">
+            <h3> کاپوچینو</h3>
+            <div class="price">111 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/mocha.jpg" alt="موکا" loading="lazy">
+            <h3>موکا</h3>
+            <div class="price">130 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/latte.jpg" alt="لته" loading="lazy">
+            <h3> لته </h3>
+            <div class="price">135 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/macha.jpg" alt="ماچا" loading="lazy">
+            <h3> ماچا</h3>
+            <div class="price">140 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+        </div>
+    </div>
+
+        <div id="herbal-tea" class="menu-section">
+            <h2 class="menu-title">دمنوش‌ها</h2>
+            <div class="menu-grid">
+                <!-- آیتم‌های منو دمنوش‌ها -->
+                <div class="menu-item">
+                    <img src="LIGHT(img)/Chamomile Tea.jpg" alt="دمنوش بابونه" loading="lazy">
+                    <h3>دمنوش بابونه</h3>
+                    <div class="price">95 تومان</div>
+                    <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                    <img src="LIGHT(img)/tea.jpg" alt="چای" loading="lazy">
+                    <h3>چای</h3>
+                    <div class="price">65 تومان</div>
+                    <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/Peppermint Tea.jpg" alt="دمنوش نعناع" loading="lazy">
+                <h3>دمنوش نعناع</h3>
+                <div class="price">80 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/Ginger Tea.jpg" alt="دمنوش زنجبیل" loading="lazy">
+                <h3>دمنوش زنجبیل</h3>
+                <div class="price">75 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/Cinnamon Tea.jpg" alt="دمنوش دارچین" loading="lazy">
+                <h3> دمنوش دارچین </h3>
+                <div class="price">68 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/Borage Tea.jpg" alt="گل گاوزبان" loading="lazy">
+                <h3> گل گاوزبان</h3>
+                <div class="price">75 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+        </div>
+    </div>
+    
+
+        <div id="cold-drinks" class="menu-section">
+            <h2 class="menu-title">نوشیدنی‌های سرد</h2>
+            <div class="menu-grid">
+                <!-- آیتم‌های منو نوشیدنی‌های سرد -->
+                <div class="menu-item">
+                    <img src="LIGHT(img)/ice americano.jpg" alt="ایس امریکانو" loading="lazy">
+                    <h3>ایس امریکانو</h3>
+                    <div class="price">105 تومان</div>
+                    <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                    <img src="LIGHT(img)/ice latte.jpg" alt="ایس لته" loading="lazy" >
+                    <h3>ایس لته</h3>
+                    <div class="price">120 تومان</div>
+                    <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/ice mocha.jpg" alt=" ایس موکا" loading="lazy">
+                <h3>ایس موکا</h3>
+                <div class="price">130 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/iced-caramel macchiato.webp" alt="ایس کارامل ماکیاتو" loading="lazy">
+                <h3>ایس کارامل ماکیاتو</h3>
+                <div class="price">140 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/cold brew.jpg" alt="کلد بری" loading="lazy">
+                <h3>کلد بری </h3>
+                <div class="price">115 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/chocalet coffee.jpg" alt="چاکلت کافی" loading="lazy">
+                <h3> چاکلت کافی</h3>
+                <div class="price">98 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+        </div>
+    </div>
+          <div id="food" class="menu-section">
+            <h2 class="menu-title">غذاها</h2>
+            <div class="menu-grid">
+                <!-- آیتم‌های منو غذاها -->
+                <div class="menu-item">
+                    <img src="LIGHT(img)/english breakfast.jpg" alt=" صبحانه انگیلیسی" loading="lazy">
+                    <h3>صبحانه انگیلیسی</h3>
+                    <div class="price">230 تومان</div>
+                    <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                    <img src="LIGHT(img)/omlet.jpg" alt=" املت" loading="lazy">
+                    <h3>املت</h3> 
+                    <div class="price">148 تومان</div>
+                    <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/nimro.jpg" alt="نیمرو" loading="lazy">
+                <h3>نیمرو</h3>
+                <div class="price">135 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/halim.jpg" alt="حلیم" loading="lazy">
+                <h3>حلیم</h3> </h3>
+                <div class="price">120 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/otmil.jpg" alt="اتمیل" loading="lazy">
+                <h3> اتمیل </h3>
+                <div class="price">150 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+                </div>
+    
+                <div class="menu-item">
+                <img src="LIGHT(img)/french tost.jpg" alt="فرنچ تست" loading="lazy">
+                <h3> فرنچ تست</h3>
+                <div class="price">160 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+        </div>
+    </div>
+
+       <div id="desserts" class="menu-section">
+         <h2 class="menu-title"> دسرها </h2>
+         <div class="menu-grid">
+            <!--  آیتم‌های منو دسر ها-->
+            <div class="menu-item">
+                <img src="LIGHT(img)/strawberry cheesecake.jpg" alt=" چیز کیک توت فرنگی" loading="lazy">
+                <h3>چیز کیک توت فرنگی</h3>
+                <div class="price">150 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+                <img src="LIGHT(img)/San-Sebastian-cheesecake-thumbnail-480x270.jpg" alt=" چیز کیک سن سباستین" loading="lazy">
+                <h3>چیز کیک سن سباستین</h3>
+                <div class="price">145 تومان</div>
+                <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/eclair.jpg" alt="اکلر" loading="lazy">
+            <h3>اکلر</h3>
+            <div class="price">135 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/tiramisu.jpg" alt="تیرامیسو" loading="lazy">
+            <h3>تیرامیسو</h3> 
+            <div class="price">140 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/cream brulee.jpg" alt="کرم بروله" loading="lazy">
+            <h3> کرم بروله</h3>
+            <div class="price">170 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+            </div>
+
+            <div class="menu-item">
+            <img src="LIGHT(img)/donuts.jpg" alt="دونات" loading="lazy">
+            <h3> دونات</h3>
+            <div class="price">138 تومان</div>
+            <a href="#" class="add-note">افزودن به یادداشت</a>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+         // تابع برای نمایش بخش انتخاب‌شده و مخفی کردن بقیه بخش‌ها
+         function showSection(sectionId) {
+            var sections = document.querySelectorAll('.menu-section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // به‌طور پیش‌فرض نمایش بخش اول (نوشیدنی‌های گرم)
+        showSection('hot-drinks');
+    </script>
+</body>
+</html>
